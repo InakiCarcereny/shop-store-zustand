@@ -4,14 +4,15 @@ interface CartStore {
   cartItems: Item[];
   addItem: (item: Item) => void;
   removeItem: (item: Item) => void;
+  clearCart: () => void;
 }
 
 interface Item {
-  id: string;
-  name: string;
+  id: number;
+  title: string;
   price: number;
   description: string;
-  quantity: number;
+  images: string[];
 }
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -22,4 +23,5 @@ export const useCartStore = create<CartStore>((set) => ({
     set((state) => ({
       cartItems: state.cartItems.filter((cartItem) => cartItem !== item),
     })),
+  clearCart: () => set({ cartItems: [] }),
 }));
