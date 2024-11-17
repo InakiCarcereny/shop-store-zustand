@@ -1,6 +1,6 @@
 export function MovementPhrase() {
   return (
-    <div className="text-center font-semibold text-sm text-zinc-400 whitespace-nowrap">
+    <div className="text-center font-semibold text-sm text-zinc-400 text-wrap">
       THIS IS A SIMPLE REACT SHOPPING CART BUILT WITH ZUSTAND. GIVE IT A TRY!
     </div>
   );

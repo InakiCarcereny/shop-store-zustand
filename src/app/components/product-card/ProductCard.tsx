@@ -16,7 +16,9 @@ export function ProductCard({
   description,
   images,
 }: ProductCardProps) {
-  const { addItem } = useCartStore();
+  const { addItem, cartItems, removeItem } = useCartStore();
+
+  const isInCart = cartItems.some((item) => item.id === id);
 
   return (
     <li className="flex flex-col gap-4 bg-gradient-to-b from-zinc-200 to-white w-[250px] min-h-[300px] rounded-[6px] px-4 py-2">
@@ -37,12 +39,27 @@ export function ProductCard({
           </p>
           <h3 className="text-xl font-semibold">${price}</h3>
         </div>
-        <button
-          onClick={() => addItem({ id, title, price, description, images })}
-          className="bg-blue-400 rounded-[4px] px-2 py-2 flex items-center justify-center"
-        >
-          <span className="text-sm font-semibold text-white">Add to cart</span>
-        </button>
+        {isInCart ? (
+          <button
+            onClick={() =>
+              removeItem({ id, title, price, description, images })
+            }
+            className="bg-red-400 rounded-[4px] px-2 py-2 flex items-center justify-center"
+          >
+            <span className="text-sm font-semibold text-white">
+              Remove from cart
+            </span>
+          </button>
+        ) : (
+          <button
+            onClick={() => addItem({ id, title, price, description, images })}
+            className="bg-blue-400 rounded-[4px] px-2 py-2 flex items-center justify-center"
+          >
+            <span className="text-sm font-semibold text-white">
+              Add to cart
+            </span>
+          </button>
+        )}
       </footer>
     </li>
   );

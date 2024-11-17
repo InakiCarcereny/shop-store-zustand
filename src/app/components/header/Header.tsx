@@ -13,9 +13,9 @@ export function Header() {
   return (
     <>
       <header className="flex items-center justify-between w-full">
-        <h1 className="text-3xl font-semibold flex flex-col">
+        <h1 className="text-3xl font-semibold flex flex-col text-wrap">
           Welcome to our{" "}
-          <span className="text-blue-400 text-6xl pl-12 font-semibold">
+          <span className="text-blue-400 text-4xl pl-6 md:text-6xl md:pl-12 font-semibold">
             Shop Cart
           </span>
         </h1>
