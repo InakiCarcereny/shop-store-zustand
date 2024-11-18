@@ -1,4 +1,4 @@
-import { Header, MainContent, MovementPhrase } from "./components";
+import { Footer, Header, MainContent, MovementPhrase } from "./components";
 
 export default function Home() {
   return (
@@ -8,6 +8,8 @@ export default function Home() {
       <MovementPhrase />
 
       <MainContent />
+
+      <Footer />
     </div>
   );
 }

@@ -7,3 +7,4 @@ export * from "./loading";
 export * from "./product-list";
 export * from "./cart-modal";
 export * from "./buttons";
+export * from "./footer";

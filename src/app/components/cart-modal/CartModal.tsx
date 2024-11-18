@@ -40,7 +40,7 @@ export function CartModal() {
               </div>
 
               <button onClick={() => removeItem(item)}>
-                <Trash className="w-6 h-6 text-black hover:text-blue-400 duration-200" />
+                <Trash className="w-6 h-6 text-red-400" />
               </button>
             </li>
           ))}
