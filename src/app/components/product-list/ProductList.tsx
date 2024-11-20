@@ -22,7 +22,7 @@ export function ProductList() {
 
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 items-center">
-      {products.slice(0, 45).map((product) => (
+      {products.slice(0, 27).map((product) => (
         <ProductCard
           key={product.id}
           id={product.id}
