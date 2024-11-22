@@ -22,7 +22,7 @@ export function Buttons() {
 
   return (
     <div className="flex items-ceter justify-center sm:flex-row gap-6 w-full">
-      <div className="bg-zinc-100 rounded-[4px] px-2 py-2 flex items-center justify-between w-[450px]">
+      <div className="bg-zinc-100 rounded-[4px] px-2 py-2 flex items-center justify-between w-full max-w-[450px]">
         <input
           type="search"
           className="bg-transparent w-full text-sm focus:outline-none"
