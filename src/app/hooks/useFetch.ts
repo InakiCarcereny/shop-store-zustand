@@ -8,8 +8,8 @@ export function useFetch() {
   const [error, setError] = useState<Error | unknown | null>(null);
 
   const getProducts = async () => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const response = await productsAdapter();
       setProducts(response);
     } catch (error) {
