@@ -5,12 +5,16 @@ import { Loading } from "../loading";
 import { useFetch } from "@/app/hooks/useFetch";
 import { ProductCard } from "../product-card";
 
-export function ProductList() {
+interface ProductListProps {
+  query: string;
+}
+
+export function ProductList({ query }: ProductListProps) {
   const { products, getProducts, isLoading } = useFetch();
 
-  // const sortProducts = () => {
-  //   products.sort((a, b) => b.price - a.price);
-  // }
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(query.toLowerCase())
+  );
 
   useEffect(() => {
     getProducts();
@@ -22,7 +26,7 @@ export function ProductList() {
 
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 items-center">
-      {products.slice(0, 27).map((product) => (
+      {filteredProducts.slice(0, 35).map((product) => (
         <ProductCard
           key={product.id}
           id={product.id}

@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { Cross, Trash } from "@/app/icons";
+import { Cross, Trash, Plus, Minus } from "@/app/icons";
 import { useCartStore } from "@/app/store/cart-store";
 import { useModalStore } from "@/app/store/modal-store";
 
 export function CartModal() {
   const { closeModal } = useModalStore();
 
-  const { cartItems, clearCart, removeItem } = useCartStore();
+  const { cartItems, clearCart, removeItem, addQuantity, lessQuantity } =
+    useCartStore();
 
   return (
     <aside className="fixed top-0 right-0 w-[400px] h-full bg-white flex flex-col gap-2 px-4 py-4 border-l border-zinc-400 z-50">
@@ -31,11 +32,32 @@ export function CartModal() {
                   alt="product image"
                   className="w-14 h-14 rounded-[4px]"
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-1">
                   <h4 className="text-sm font-semibold text-zinc-400">
                     {item.title}
                   </h4>
-                  <p className="text-xl font-semibold">${item.price}</p>
+                  <div className="flex items-center gap-10">
+                    <span className="flex items-center gap-2">
+                      <button
+                        className="rounded-full px-1 py-1 bg-zinc-200"
+                        onClick={() => {
+                          if (item.quantity > 1) {
+                            lessQuantity(item);
+                          }
+                        }}
+                      >
+                        <Minus />
+                      </button>
+                      {item.quantity}
+                      <button
+                        className="rounded-full px-1 py-1 bg-zinc-200"
+                        onClick={() => addQuantity(item, item.quantity + 1)}
+                      >
+                        <Plus />
+                      </button>
+                    </span>
+                    <p className="text-xl font-semibold">${item.price}</p>
+                  </div>
                 </div>
               </div>
 
@@ -47,7 +69,8 @@ export function CartModal() {
         </ul>
 
         <span className="font-semibold text-base whitespace-nowrap">
-          Total: ${cartItems.reduce((acc, item) => acc + item.price, 0)}
+          Total: $
+          {cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}
         </span>
 
         {cartItems.length > 0 && (
